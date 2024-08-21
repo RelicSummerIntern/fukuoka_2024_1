@@ -1,18 +1,30 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            トップページ
-        </h2>
-    </x-slot>
+@extends('layouts.app')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <a href="{{ route('post.index') }}" class="bg-white border-b border-gray-200 p-6 block w-full text-center
-                font-semibold text-gray-800 hover:bg-gray-100 text-decoration-none">
-                    掲示板へ移動
-                </a>
-            </div>
-        </div>
-    </div>
-</x-app-layout>
+<!-- header -->
+@section('header')
+	@include('parts.header')
+@endsection
+
+<!-- page contents -->
+@section('content')
+	<h2 class="fw-bold text-xl text-gray-800 leading-tight"
+		style="font-family: 'Dancing Script', cursive; font-weight:auto; margin: 4px 0 0 12px; ">
+		Cook Shot
+	</h2>
+
+	<img src="{{ asset('images/home_image.jpg') }}" alt="Aplication image">
+
+	<div class="px-40 py-24">
+		<div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+			<div class="bg-white-subtle overflow-hidden shadow-sm sm:rounded-lg">
+				<a href="{{ route('post.index') }}"
+					class="bg-warning fs-2 border-b border-gray-200 p-6 block w-full text-center
+                        　 font-semibold text-gray-800 hover:bg-gray-100 text-decoration-none">
+					自炊をはじめる
+				</a>
+			</div>
+		</div>
+	</div>
+@endsection
+
+{{-- Footer --}}
