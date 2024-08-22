@@ -7,13 +7,16 @@ use Illuminate\Http\Request;
 
 class DiaryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function post_index()
     {
-        //
+        return view('diary-post');
     }
+
+    public function index_index()
+    {
+        return view('diary-index');
+    }
+
 
     /**
      * Show the form for creating a new resource.
