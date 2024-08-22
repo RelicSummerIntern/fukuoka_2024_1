@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="border-b border-gray-100 bg-danger">
+<nav x-data="{ open: false }" class="border-b border-gray-100 bg-danger bg-gradient">
 	<!-- Primary Navigation Menu -->
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="flex justify-between h-16">
@@ -134,3 +134,11 @@
 		</div>
 	</div>
 </nav>
+<!-- Aplication Title -->
+<a href="{{ route('home') }}" class="fw-bold text-xl text-gray-800 leading-tight"
+	style="font-family: 'Dancing Script', cursive;
+           font-weight:auto;
+           margin: 4px 0 0 12px;
+           text-decoration:none">
+	Cook Shot
+</a>
