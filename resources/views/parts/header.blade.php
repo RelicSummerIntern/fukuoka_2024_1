@@ -12,12 +12,12 @@
 
 				<!-- Navigation Links -->
 				<div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-					<x-nav-link :href="route('post.index')" :active="request()->routeIs('post.index')" class="text-decoration-none text-white">
+					<x-nav-link :href="route('home')" class="text-decoration-none text-white">
 						{{ __('献立日記') }}
 					</x-nav-link>
 				</div>
 				<div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-					<x-nav-link :href="route('post.index')" :active="request()->routeIs('post.index')" class="text-decoration-none text-white">
+					<x-nav-link :href="route('home')" class="text-decoration-none text-white">
 						{{ __('お気に入り') }}
 					</x-nav-link>
 				</div>
@@ -90,11 +90,6 @@
 
 	<!-- Responsive Navigation Menu -->
 	<div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
-		<div class="pt-2 pb-3 space-y-1">
-			<x-responsive-nav-link :href="route('post.index')" :active="request()->routeIs('post.index')">
-				{{ __('Post Index') }}
-			</x-responsive-nav-link>
-		</div>
 
 		<!-- Responsive Settings Options -->
 		<div class="pt-4 pb-1 border-t border-gray-200">
@@ -134,6 +129,7 @@
 		</div>
 	</div>
 </nav>
+
 <!-- Aplication Title -->
 <a href="{{ route('home') }}" class="fw-bold text-xl text-gray-800 leading-tight"
 	style="font-family: 'Dancing Script', cursive;
