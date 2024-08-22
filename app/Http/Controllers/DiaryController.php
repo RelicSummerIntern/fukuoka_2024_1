@@ -12,7 +12,7 @@ class DiaryController extends Controller
         return view('diary-post');
     }
 
-    public function index_index()
+    public function index()
     {
         return view('diary-index');
     }
