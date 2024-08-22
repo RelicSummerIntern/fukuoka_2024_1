@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+<nav x-data="{ open: false }" class="border-b border-gray-100 bg-danger bg-gradient">
 	<!-- Primary Navigation Menu -->
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="flex justify-between h-16">
@@ -12,8 +12,13 @@
 
 				<!-- Navigation Links -->
 				<div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-					<x-nav-link :href="route('post.index')" :active="request()->routeIs('post.index')" class="text-decoration-none">
-						{{ __('掲示板') }}
+					<x-nav-link :href="route('post.index')" :active="request()->routeIs('post.index')" class="text-decoration-none text-white">
+						{{ __('献立日記') }}
+					</x-nav-link>
+				</div>
+				<div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+					<x-nav-link :href="route('post.index')" :active="request()->routeIs('post.index')" class="text-decoration-none text-white">
+						{{ __('お気に入り') }}
 					</x-nav-link>
 				</div>
 			</div>
@@ -129,3 +134,11 @@
 		</div>
 	</div>
 </nav>
+<!-- Aplication Title -->
+<a href="{{ route('home') }}" class="fw-bold text-xl text-gray-800 leading-tight"
+	style="font-family: 'Dancing Script', cursive;
+           font-weight:auto;
+           margin: 4px 0 0 12px;
+           text-decoration:none">
+	Cook Shot
+</a>

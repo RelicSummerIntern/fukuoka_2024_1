@@ -6,7 +6,7 @@
         "editor.formatOnSave": true
     },
     "bladeFormatter.format.noMultipleEmptyLines": true,
-    "bladeFormatter.format.noSingleQuote": true,
+    "bladeFormatter.format.noSingleQuote": false,
     "bladeFormatter.format.sortHtmlAttributes": "none",
     "bladeFormatter.format.useTabs": true,
     "bladeFormatter.format.indentSize": 1,
