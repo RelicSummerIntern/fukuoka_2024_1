@@ -9,7 +9,7 @@ class ChatGPTController extends Controller
 {
     public function showUploadForm()
     {
-        return view('upload');
+        return view('photo-reader');
     }
 
     public function processImage(Request $request)
@@ -65,6 +65,3 @@ class ChatGPTController extends Controller
         return view('result', ['ingredients' => $ingredients]);
     }
 }
-
-
-
