@@ -7,7 +7,7 @@
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 
 	<!-- title -->
-	<title> @yield('title')</title>
+	<title> Cook Shot </title>
 
 	<!-- Fonts -->
 	<link rel="preconnect" href="https://fonts.bunny.net">
