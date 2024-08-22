@@ -39,7 +39,7 @@ Route::get('/register', function () {
 })->name('register');
 //
 
-Route::post('/phot-reader/index', [PhotoreaderController::class, 'index'])->name('photo-reader.index');
+Route::post('/photo-reader/index', [PhotoreaderController::class, 'index'])->name('photo-reader.index');
 
 
 Route::post('/food-configuration/index', [FoodconfigurationController::class, 'index'])->name('food-configuration.index');
