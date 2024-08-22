@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('diaries', function (Blueprint $table) {
             $table->id(); // id: bigint
-            $table->string('user_id', 255);
+            $table->unsignedBigInteger('user_id'); // 外部キーとしてのuser_id
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade'); //userテーブルのidを参照(ユーザーが削除されたら日記も削除)
             $table->string('title', 50);
             $table->string('comment', 255);
             $table->tinyInteger('rating');
