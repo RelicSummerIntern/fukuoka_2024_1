@@ -1,8 +1,7 @@
 <?php
 
 use App\Http\Controllers\DiaryController;
-use App\Http\Controllers\FoodconfigrationController;
-use App\Http\Controllers\FoofconfirationController;
+use App\Http\Controllers\FoodconfigurationController;
 use App\Http\Controllers\PhotoreaderController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
@@ -40,19 +39,19 @@ Route::get('/register', function () {
 })->name('register');
 //
 
-Route::get('/phot-reader/index', [PhotoreaderController::class, 'index'])->name('photo-reader.index');
+Route::post('/phot-reader/index', [PhotoreaderController::class, 'index'])->name('photo-reader.index');
 
 
-Route::get('/food-configration/index', [FoodconfigrationController::class, 'index'])->name('food-configration.index');
+Route::post('/food-configration/index', [FoodconfigurationController::class, 'index'])->name('food-configration.index');
 
 
 Route::get('/recipe/index', [RecipeController::class, 'index'])->name('recipe.index');
 
 
-Route::get('/diary-post/index', [DiaryController::class, 'post_index'])->name('diary-post.index');
+Route::post('/diary-post/index', [DiaryController::class, 'post_index'])->name('diary-post.index');
 
 
-Route::get('/dirary-index/index', [DiaryController::class, 'index_index'])->name('diary-index.index');
+Route::get('/dirary-index/index', [DiaryController::class, 'index'])->name('diary-index.index');
 
 
 //以下は既存のログインページに必要なルート
