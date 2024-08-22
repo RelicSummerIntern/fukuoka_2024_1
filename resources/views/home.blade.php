@@ -7,7 +7,7 @@
 	<div class="px-40 py-24">
 		<div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 			<div class="bg-white-subtle overflow-hidden shadow sm:rounded-lg rounded-3">
-				<a href="{{ route('post.index') }}"
+				<a href="{{ route('photo-reader.index') }}"
 					class="bg-warning bg-opacity-75 fs-2 border-b border-gray-200 p-6 block w-full text-center
                         　 font-semibold text-gray-800 hover:bg-gray-100 text-decoration-none">
 					自炊をはじめる

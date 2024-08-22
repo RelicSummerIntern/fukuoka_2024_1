@@ -29,7 +29,7 @@ Route::get('/home', function () {
     return view('home');
 })->name('home');
 
-//ログインページおよび新規登録画面は既存のページにリダイレクト
+
 Route::get('/login', function () {
     return view('login');
 })->name('login');
@@ -39,18 +39,11 @@ Route::get('/register', function () {
 })->name('register');
 //
 
-Route::post('/photo-reader/index', [PhotoreaderController::class, 'index'])->name('photo-reader.index');
 
-
+Route::get('/photo-reader/index', [PhotoreaderController::class, 'index'])->name('photo-reader.index');
 Route::post('/food-configuration/index', [FoodconfigurationController::class, 'index'])->name('food-configuration.index');
-
-
 Route::get('/recipe/index', [RecipeController::class, 'index'])->name('recipe.index');
-
-
-Route::post('/diary-post/index', [DiaryController::class, 'post_index'])->name('diary-post.index');
-
-
+Route::get('/diary-post/index', [DiaryController::class, 'post_index'])->name('diary-post.index');
 Route::get('/dirary-index/index', [DiaryController::class, 'index'])->name('diary-index.index');
 
 
