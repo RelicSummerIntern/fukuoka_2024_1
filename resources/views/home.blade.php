@@ -24,7 +24,7 @@
 	<div class="container mt-5">
 		<div class="d-flex justify-content-center">
 			<figure class="card w-25">
-				<figcaption　class="card-header text-center">
+				<figcaption class="card-header text-center">
 					<h2>最新の日記</h2>
 				</figcaption>
 				<img src="{{ asset('images/home_image.jpg') }}" alt="Latest your diary" width="100px" height="100px">
