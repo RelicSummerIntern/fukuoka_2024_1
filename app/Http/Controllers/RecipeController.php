@@ -2,64 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Recipe;
 use Illuminate\Http\Request;
+use App\Services\RecipeScraper;
 
 class RecipeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    protected $recipeScraper;
+
+    public function __construct(RecipeScraper $recipeScraper)
     {
-        return view('recipe');
+        $this->recipeScraper = $recipeScraper;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function search(Request $request)
     {
-        //
-    }
+        $RAKUTEN_BASE_URL = "https://recipe.rakuten.co.jp"; # 楽天レシピのURL
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        // 選択された食材を取得
+        $selectedIngredients = $request->input('selected_ingredients', []);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Recipe $recipe)
-    {
-        //
-    }
+        // サービスを使用してレシピを取得
+        $recipes = $this->recipeScraper->fetchRecipes($selectedIngredients);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Recipe $recipe)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Recipe $recipe)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Recipe $recipe)
-    {
-        //
+        // フィルタリングされたレシピをビューに渡す
+        return view('recipes', ['recipes' => $recipes]);
     }
 }
