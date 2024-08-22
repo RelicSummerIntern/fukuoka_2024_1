@@ -12,8 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('diaries', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->id(); // id: bigint
+            $table->string('user_id', 255);
+            $table->string('title', 50);
+            $table->string('comment', 255);
+            $table->tinyInteger('rating');
+            $table->boolean('favorite');
+            $table->timestamps(); // created_at, updated_at: timestamp
+
+            // 画像用のカラムを追加 (例えば、画像のパスを保存する場合)
+            #$table->string('image_path')->nullable(); // 画像のパス、nullを許容
         });
     }
 
