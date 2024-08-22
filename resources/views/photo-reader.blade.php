@@ -16,7 +16,7 @@
         <input type="file" id="file-upload" name="image" class="d-none" accept="image/*">
 
         <!-- フォーム -->
-        <form id="upload-form" method="POST" enctype="multipart/form-data" action="{{ route('food-configuration.index') }}" class="text-center mt-3">
+        <form id="upload-form" method="post" enctype="multipart/form-data" action="{{ route('photo-reader.index') }}" class="text-center mt-3">
             @csrf
             <input type="hidden" id="image-data" name="image_data">
             <!-- 料理開始！ボタン -->
