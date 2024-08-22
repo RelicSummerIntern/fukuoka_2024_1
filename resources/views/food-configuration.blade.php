@@ -16,10 +16,6 @@
                                     <h2>食材リスト</h2>
                                 </div>
                                 <div class="card-body" style="font-size: 1.5rem;">
-                                    <!-- テスト用の固定食材リスト -->
-                                    @php
-                                    $ingredients = ['サバの切り身', '青ネギ', 'ひき肉', '豆腐', 'のり'];
-                                    @endphp
 
                                     @if(isset($ingredients) && count($ingredients) > 0)
                                     @foreach($ingredients as $ingredient)
