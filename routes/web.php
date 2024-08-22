@@ -42,7 +42,7 @@ Route::get('/register', function () {
 Route::post('/phot-reader/index', [PhotoreaderController::class, 'index'])->name('photo-reader.index');
 
 
-Route::post('/food-configration/index', [FoodconfigurationController::class, 'index'])->name('food-configration.index');
+Route::post('/food-configuration/index', [FoodconfigurationController::class, 'index'])->name('food-configuration.index');
 
 
 Route::get('/recipe/index', [RecipeController::class, 'index'])->name('recipe.index');
