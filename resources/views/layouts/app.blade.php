@@ -6,7 +6,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 
-	<title>{{ config('app.name', 'Laravel') }}</title>
+	<!-- title -->
+	<title> @yield('title')</title>
 
 	<!-- Fonts -->
 	<link rel="preconnect" href="https://fonts.bunny.net">
@@ -18,9 +19,9 @@
 	<!-- bootsrap -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-</head>
-<!-- Scripts -->
-@vite(['resources/css/app.css', 'resources/css/styles.css', 'resources/sass/app.scss', 'resources/js/app.js'])
+
+	<!-- Scripts -->
+	@vite(['resources/css/app.css', 'resources/css/styles.css', 'resources/sass/app.scss', 'resources/js/app.js'])
 
 </head>
 
@@ -28,18 +29,13 @@
 	<div class="min-h-screen bg-gray-100">
 
 		<!-- Page Heading -->
-		<header>
+		<header style="position: fixed; width:100%; height:17%; top:0; z-index:1000;">
+			@include('parts.header')
 			@yield('header')
 		</header>
 
-		{{-- @if (session('success'))
-			<div class="bg-green-300 border p-4 font-semibold text-center">
-				{{ session("success") }}
-			</div>
-		@endif --}}
-
 		<!-- Page Content -->
-		<main>
+		<main style="position:absolute; top:17%">
 			@yield('content')
 		</main>
 
