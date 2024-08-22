@@ -1,5 +1,7 @@
 <?php
 
+<?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -19,25 +21,10 @@ class ChatGPTController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
-        // 画像を取得
+        // 画像を取得してBase64エンコード
         $image = $request->file('image');
         $imagePath = $image->getPathname();
-
-        $base64Image = base64_encode(file_get_contents($imagePath));
-
-        // ChatGPT APIにリクエストを送信
-        $responseData = $this->sendChatGPTRequest($base64Image);
-
-        // レスポンスデータを処理
-        if (isset($responseData['choices'][0]['message']['content'])) {
-            $content = $responseData['choices'][0]['message']['content'];
-            $ingredients = array_filter(explode("\n", trim($content)));
-        } else {
-            \Log::error('API Response Error:', $responseData);
-            $ingredients = ['エラーが発生しました。もう一度お試しください。'];
-        }
-
-        return view('result', ['ingredients' => $ingredients]);
+        return base64_encode(file_get_contents($imagePath));
     }
 
     private function sendChatGPTRequest(string $base64Image)
@@ -59,6 +46,27 @@ class ChatGPTController extends Controller
             'max_tokens' => 300
         ])->json();
     }
+
+    public function getIngredientsList(Request $request)
+    {
+        // 画像処理
+        $base64Image = $this->processImage($request);
+
+        // ChatGPT APIにリクエストを送信
+        $responseData = $this->sendChatGPTRequest($base64Image);
+
+        // レスポンスデータを処理してresultビューに渡す
+        if (isset($responseData['choices'][0]['message']['content'])) {
+            $content = $responseData['choices'][0]['message']['content'];
+            $ingredients = array_filter(explode("\n", trim($content)));
+        } else {
+            \Log::error('API Response Error:', $responseData);
+            $ingredients = ['エラーが発生しました。もう一度お試しください。'];
+        }
+
+        return view('result', ['ingredients' => $ingredients]);
+    }
 }
+
 
 
