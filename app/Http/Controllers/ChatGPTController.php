@@ -62,6 +62,6 @@ class ChatGPTController extends Controller
             $ingredients = ['エラーが発生しました。もう一度お試しください。'];
         }
 
-        return view('result', ['ingredients' => $ingredients]);
+        return view('food-configuration', ['ingredients' => $ingredients]);
     }
 }
