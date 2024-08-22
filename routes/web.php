@@ -37,9 +37,10 @@ Route::get('/login', function () {
 Route::get('/register', function () {
     return view('register');
 })->name('register');
+//
 
 
-Route::get('/phot-reader/index', [PhotoreaderController::class, 'index'])->name('photo-reader.index');
+Route::get('/photo-reader/index', [PhotoreaderController::class, 'index'])->name('photo-reader.index');
 Route::post('/food-configuration/index', [FoodconfigurationController::class, 'index'])->name('food-configuration.index');
 Route::get('/recipe/index', [RecipeController::class, 'index'])->name('recipe.index');
 Route::get('/diary-post/index', [DiaryController::class, 'post_index'])->name('diary-post.index');
