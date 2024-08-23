@@ -22,7 +22,7 @@
 									<{{ $ranking }}: {{ $recipe['title'] }}>
 								</h3>
 							</figcaption>
-							<img src="{{ $recipe['image'] }}" alt="Latest your diary" width="auto" height="auto"
+							<img src="{{ $recipe['image'] }}" alt="Latest your diary" width="368px" height="368px"
 								class="d-flex justify-content-center">
 							<div class="card-body">
 								<a href={{ $recipe['url'] }} class="about-description" style="text-decoration: underline;">レシピURL</a>
@@ -33,6 +33,9 @@
 					$ranking++;
 					?>
 				@endforeach
+			@else
+				<p> 最適なレシピが提案できませんでした。選択された食材が多かったのかもしれません。もう一度やり直してください。
+				<p>
 			@endif
 		</div>
 	</section>
