@@ -14,15 +14,23 @@ class ChatGPTController extends Controller
 
     public function processImage(Request $request)
     {
-        // 画像のバリデーション
+        // Base64データが適切であるか確認
         $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'image_data' => 'required|string',
         ]);
 
-        // 画像を取得してBase64エンコード
-        $image = $request->file('image');
-        $imagePath = $image->getPathname();
-        return base64_encode(file_get_contents($imagePath));
+        // Base64エンコードされた画像データを取得
+        $base64Image = $request->input('image_data');
+
+        // 画像データの形式をチェック
+        if (strpos($base64Image, 'data:image') !== 0) {
+            throw new \Exception('Invalid image data format.');
+        }
+
+        // Base64データからプレフィックスを取り除き、純粋な画像データにする
+        $base64Image = preg_replace('/^data:image\/\w+;base64,/', '', $base64Image);
+
+        return $base64Image;
     }
 
     private function sendChatGPTRequest(string $base64Image)
@@ -62,6 +70,6 @@ class ChatGPTController extends Controller
             $ingredients = ['エラーが発生しました。もう一度お試しください。'];
         }
 
-        return view('result', ['ingredients' => $ingredients]);
+        return view('food-configuration', ['ingredients' => $ingredients]);
     }
 }
