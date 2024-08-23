@@ -22,7 +22,7 @@
 									<{{ $ranking }}: {{ $recipe['title'] }}>
 								</h3>
 							</figcaption>
-							<img src="{{ $recipe['image'] }}" alt="Latest your diary" width="auto" height="auto"
+							<img src="{{ $recipe['image'] }}" alt="Latest your diary" width="368px" height="368px"
 								class="d-flex justify-content-center">
 							<div class="card-body">
 								<a href={{ $recipe['url'] }} class="about-description" style="text-decoration: underline;">レシピURL</a>
