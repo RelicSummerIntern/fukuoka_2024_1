@@ -38,6 +38,9 @@ Route::get('/register', function () {
     return view('register');
 })->name('register');
 
+Route::get('/incomplete', function () {
+    return view('incomplete');
+})->name('incomplete');
 
 
 Route::get('/photo-reader/index', [PhotoreaderController::class, 'index'])->name('photo-reader.index');
