@@ -21,7 +21,7 @@
 				@csrf
 				<input type="hidden" id="image-data" name="image_data">
 				<!-- 料理開始！ボタン -->
-				<button type="submit" class="btn btn-warning btn-lg">食材選択</button>
+				<button type="submit" class="btn btn-warning btn-lg">食材選択へ</button>
 			</form>
 		</div>
 	</div>
