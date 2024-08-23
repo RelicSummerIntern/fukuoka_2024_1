@@ -9,6 +9,9 @@
 	<!-- title -->
 	<title> Cook Shot </title>
 
+	<!-- Fabicon -->
+	<link rel="icon" href="{{ asset('images/icon_recipe.png') }}">
+
 	<!-- Fonts -->
 	<link rel="preconnect" href="https://fonts.bunny.net">
 	<link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
@@ -25,26 +28,23 @@
 
 </head>
 
-<body class="font-sans antialiased">
-	<div class="min-h-screen bg-gray-100">
+<body class="font-sans antialiased min-h-screen" style="display: flex; flex-direction: column;">
+	<!-- Page Heading -->
+	<header style="position: fixed; width:100%; height:13%; top:0; z-index:1000;">
+		@include('parts.header')
+		@yield('header')
+	</header>
 
-		<!-- Page Heading -->
-		<header style="position: fixed; width:100%; height:17%; top:0; z-index:1000;">
-			@include('parts.header')
-			@yield('header')
-		</header>
+	<!-- Page Content -->
+	<main style="margin-top:13%;">
+		@yield('content')
+	</main>
 
-		<!-- Page Content -->
-		<main style="position:absolute; top:17%">
-			@yield('content')
-		</main>
+	<!-- Footer -->
+	<footer>
+		@yield('footer')
+	</footer>
 
-		<!-- Footer -->
-		<footer>
-			@yield('footer')
-		</footer>
-
-	</div>
 </body>
 
 </html>
