@@ -12,12 +12,12 @@
 
 				<!-- Navigation Links -->
 				<div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-					<x-nav-link :href="route('home')" class="text-decoration-none text-white">
+					<x-nav-link :href="route('incomplete')" class="text-decoration-none text-white">
 						{{ __('献立日記') }}
 					</x-nav-link>
 				</div>
 				<div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-					<x-nav-link :href="route('home')" class="text-decoration-none text-white">
+					<x-nav-link :href="route('incomplete')" class="text-decoration-none text-white">
 						{{ __('お気に入り') }}
 					</x-nav-link>
 				</div>
