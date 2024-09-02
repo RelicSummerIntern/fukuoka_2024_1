@@ -26,6 +26,9 @@
 	<!-- Scripts -->
 	@vite(['resources/css/app.css', 'resources/css/styles.css', 'resources/sass/app.scss', 'resources/js/app.js'])
 
+	<!-- custom css -->
+	@yield('styles')
+
 </head>
 
 <body class="font-sans antialiased min-h-screen" style="display: flex; flex-direction: column;">
