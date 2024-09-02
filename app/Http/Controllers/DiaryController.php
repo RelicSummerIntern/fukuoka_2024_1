@@ -14,7 +14,7 @@ class DiaryController extends Controller
 
     public function index()
     {
-        return view('diary-index');
+        return view('my-posts');
     }
 
 
