@@ -48,8 +48,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/food-configuration/index', [ChatGPTController::class, 'getIngredientsList'])->name('food-configuration.index');
     Route::post('/recipe/index', [RecipeController::class, 'search'])->name('recipe.index');
 
-    Route::get('/diary-post/index', [DiaryController::class, 'post_index'])->name('diary-post.index');
-    Route::get('/dirary-index/index', [DiaryController::class, 'index'])->name('diary-index.index');
+    Route::get('/diary/create', [DiaryController::class, 'create'])->name('diary-post.index');
+    Route::get('/dirary/index', [DiaryController::class, 'index'])->name('diary-index.index');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

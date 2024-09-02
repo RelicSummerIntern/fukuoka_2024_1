@@ -7,14 +7,12 @@ use Illuminate\Http\Request;
 
 class DiaryController extends Controller
 {
-    public function post_index()
-    {
-        return view('diary-post');
-    }
-
+    /**
+     * Display a listing of the resource.
+     */
     public function index()
     {
-        return view('diary-index');
+        return view('my-posts');
     }
 
 
@@ -23,7 +21,7 @@ class DiaryController extends Controller
      */
     public function create()
     {
-        //
+        return view('diary-post');
     }
 
     /**
