@@ -29,7 +29,33 @@ class DiaryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // バリデーション
+        $request->validate([
+            'title' => 'required|string|max:50',
+            'description' => 'required|string|max:255',
+            'rating' => 'required|integer|min:1|max:5',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        // 画像の保存
+        $imagePath = null;
+        if ($request->hasFile('image')) {
+            $image = $request->file('image'); // アップロードされた画像を取得
+            $imagePath = $image->store('images', 'public'); // 画像を保存し、そのパスを取得
+        }
+        // データの保存
+        $diary = new Diary();
+
+        $diary->user_id = auth()->id(); // ログインしているユーザーのIDを設定
+        $diary->image_path = $imagePath;
+        $diary->title = $request->title;
+        $diary->comment = $request->description;
+        $diary->rating = $request->rating;
+
+        $diary->save();
+
+        // 一覧画面へリダイレクト
+        return redirect()->route('diary-index.index');
     }
 
     /**
