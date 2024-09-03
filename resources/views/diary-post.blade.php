@@ -2,7 +2,7 @@
 
 @section('content')
 	<!-- 記録を登録するフォーム -->
-	<form action="{{ route('diary-post.index') }}" method="post" enctype="multipart/form-data">
+	<form action="{{ route('diary.store') }}" method="post" enctype="multipart/form-data">
 		@csrf
 		<!-- Flexboxコンテナ -->
 		<div class="d-flex justify-content-center align-items-start">
@@ -45,25 +45,21 @@
 						<option value="4">★★★★☆</option>
 						<option value="5">★★★★★</option>
 					</select>
+				</div>
 
-					<!-- 登録ボタン -->
-					<div class="text-center mt-4">
-						<label for="upload" class="btn btn-warning mt-3">登録</label>
-						<input type="submit" id="upload" class="d-none">
-					</div>
-
+				<!-- 登録ボタン -->
+				<div class="text-center mt-4">
+					<button type="submit" class="btn btn-warning mt-3">登録</button>
 				</div>
 			</div>
-			<!-- 画像データを保存する隠しフィールド -->
-			<input type="hidden" id="image-data" name="image_data">
+		</div>
 	</form>
 
-	<!-- JavaScript CDN -->
+	<!-- 選択されが画像を表示するスクリプト -->
 	<script>
 		document.addEventListener('DOMContentLoaded', () => {
 			const dropZone = document.getElementById('drop-zone');
 			const fileUpload = document.getElementById('file-upload');
-			const imageDataInput = document.getElementById('image-data');
 
 			// ドラッグオーバー時の処理
 			dropZone.addEventListener('dragover', (event) => {
@@ -83,7 +79,7 @@
 
 				const files = event.dataTransfer.files;
 				if (files.length > 0) {
-					handleFile(files[0]);
+					displayImage(files[0]);
 				}
 			});
 
@@ -91,27 +87,19 @@
 			fileUpload.addEventListener('change', () => {
 				const files = fileUpload.files;
 				if (files.length > 0) {
-					handleFile(files[0]);
+					displayImage(files[0]);
 				}
 			});
 
-			// ファイル処理共通関数
-			function handleFile(file) {
+			// 画像を表示する関数
+			function displayImage(file) {
 				const reader = new FileReader();
 
-				reader.onloadend = () => {
-					const base64Image = reader.result;
-					imageDataInput.value = base64Image;
-
-					// 画像をドロップエリアに表示
+				reader.onload = (event) => {
 					dropZone.innerHTML =
-						`<img src="${base64Image}" alt="選択した画像" style="max-width: 100%; max-height: 100%; border-radius: 8px;">`;
+						`<img src="${event.target.result}" alt="選択した画像" style="max-width: 100%; max-height: 100%; border-radius: 8px;">`;
 				};
-
 				reader.readAsDataURL(file);
-
-				// ファイル選択後に再選択できるようにinputの値をリセット
-				fileUpload.value = "";
 			}
 		});
 	</script>
