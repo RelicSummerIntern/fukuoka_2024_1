@@ -44,15 +44,19 @@ class DiaryController extends Controller
         }
 
         // データの保存
-        $diary = new Diary();
+        try {
+            $diary = new Diary();
 
-        $diary->user_id = auth()->id(); // ログインしているユーザーのIDを設定
-        $diary->image_path = $imagePath;
-        $diary->title = $request->title;
-        $diary->comment = $request->description;
-        $diary->rating = $request->rating;
+            $diary->user_id = auth()->id(); // ログインしているユーザーのIDを設定
+            $diary->image_path = $imagePath;
+            $diary->title = $request->title;
+            $diary->comment = $request->description;
+            $diary->rating = $request->rating;
 
-        $diary->save();
+            $diary->saveOrFail();
+        } catch (\Exception $e) {
+            return redirect()->route('diary.create')->with('error_message', '日記の投稿に失敗しました');
+        }
 
         // 一覧画面へリダイレクト
         return redirect()->route('diary.index');
