@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Diary;
 use Illuminate\Http\Request;
+use App\Http\Requests\DiaryRequest;
 
 class DiaryController extends Controller
 {
@@ -26,15 +27,10 @@ class DiaryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(DiaryRequest $request)
     {
-        // バリデーション
-        $request->validate([
-            'title' => 'required|string|max:50',
-            'description' => 'required|string|max:255',
-            'rating' => 'required|integer|min:1|max:5',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
+        // バリデーション済みデータを取得
+        $validatedData = $request->validated();
 
         // 画像の保存
         $imagePath = null;
@@ -49,9 +45,9 @@ class DiaryController extends Controller
 
             $diary->user_id = auth()->id(); // ログインしているユーザーのIDを設定
             $diary->image_path = $imagePath;
-            $diary->title = $request->title;
-            $diary->comment = $request->description;
-            $diary->rating = $request->rating;
+            $diary->title = $validatedData['title'];
+            $diary->comment = $validatedData['description'];
+            $diary->rating = $validatedData['rating'];
 
             $diary->saveOrFail();
         } catch (\Exception $e) {
