@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('title', 50);
             $table->string('comment', 255);
             $table->tinyInteger('rating');
-            //$table->boolean('favorite');
             $table->string('image_path')->nullable();
             $table->timestamps(); // created_at, updated_at: timestamp
         });
