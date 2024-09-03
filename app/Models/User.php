@@ -43,8 +43,9 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function posts()
+    public function diaries()
     {
-        return $this->hasMany(Post::class, 'user_id');
+        // Userが多くの日記（Diary）を持つというリレーションを定義
+        return $this->hasMany(Diary::class, 'user_id');
     }
 }

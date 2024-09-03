@@ -48,8 +48,12 @@ Route::middleware('auth')->group(function () {
     Route::post('/food-configuration/index', [ChatGPTController::class, 'getIngredientsList'])->name('food-configuration.index');
     Route::post('/recipe/index', [RecipeController::class, 'search'])->name('recipe.index');
 
-    Route::get('/diary/create', [DiaryController::class, 'create'])->name('diary-post.index');
-    Route::get('/dirary/index', [DiaryController::class, 'index'])->name('diary-index.index');
+    // 日記登録用のビューを表示するルート
+    Route::get('/diary/create', [DiaryController::class, 'create'])->name('diary.create');
+    // 日記一覧を表示するルート
+    Route::get('/dirary/index', [DiaryController::class, 'index'])->name('diary.index');
+    // 日記を保存するルート
+    Route::post('diary/store', [DiaryController::class, 'store'])->name('diary.store');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
