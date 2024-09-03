@@ -12,7 +12,7 @@
 
 				<!-- Navigation Links -->
 				<div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-					<x-nav-link :href="route('diary-index.index')" class="text-decoration-none text-white">
+					<x-nav-link :href="route('diary.index')" class="text-decoration-none text-white">
 						{{ __('献立日記') }}
 					</x-nav-link>
 				</div>

@@ -15,7 +15,6 @@ class DiaryController extends Controller
         return view('my-posts');
     }
 
-
     /**
      * Show the form for creating a new resource.
      */
@@ -43,6 +42,7 @@ class DiaryController extends Controller
             $image = $request->file('image'); // アップロードされた画像を取得
             $imagePath = $image->store('images', 'public'); // 画像を保存し、そのパスを取得
         }
+
         // データの保存
         $diary = new Diary();
 
@@ -55,7 +55,7 @@ class DiaryController extends Controller
         $diary->save();
 
         // 一覧画面へリダイレクト
-        return redirect()->route('diary-index.index');
+        return redirect()->route('diary.index');
     }
 
     /**
