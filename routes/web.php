@@ -51,15 +51,15 @@ Route::middleware('auth')->group(function () {
     // 日記登録用のビューを表示するルート
     Route::get('/diary/create', [DiaryController::class, 'create'])->name('diary.create');
     // 日記一覧を表示するルート
-    Route::get('/dirary/index', [DiaryController::class, 'index'])->name('diary.index');
+    Route::get('/diary/index', [DiaryController::class, 'index'])->name('diary.index');
     // 日記を保存するルート
     Route::post('diary/store', [DiaryController::class, 'store'])->name('diary.store');
     // 日記編集ページを表示するルート
-    Route::get('/diary/{diary}/edit', [DiaryController::class, 'edit'])->name('diary.edit');
+    Route::get('/diaries/{diary}/edit', [DiaryController::class, 'edit'])->name('diary.edit');
     // 日記を更新するルート
-    Route::put('/diary/{diary}', [DiaryController::class, 'update'])->name('diary.update');
+    Route::put('/diaries/{diary}', [DiaryController::class, 'update'])->name('diary.update');
     // 日記を削除するルート
-    Route::delete('/diary/{diary}', [DiaryController::class, 'destroy'])->name('diary.destroy');
+    Route::delete('/diaries/{diary}', [DiaryController::class, 'destroy'])->name('diary.destroy');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
