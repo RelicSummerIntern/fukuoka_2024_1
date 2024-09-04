@@ -20,6 +20,7 @@
 
 .left {
     text-align: center;
+    margin-right: 40px;
 }
 
 .right {
@@ -35,6 +36,8 @@
     background-color: #f9f9f9;
     width: 100%;
     min-height: 150px;
+    min-width: 400px;
+    max-width: 400px;
     max-height: 150px;
     overflow-y: auto;
     /* 高さを超えた場合にスクロールする */

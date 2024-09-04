@@ -18,6 +18,7 @@
 		style="font-family: 'Dancing Script', cursive; color:rgb(203, 38, 20); font-weight: bold">~ Your Diary ~
 	</h1>
 	<div class="container">
+		<hr>
 		@foreach ($diaries as $diary)
 			<div class="diary-item">
 				<section class="left">
