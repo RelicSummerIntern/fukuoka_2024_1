@@ -22,13 +22,26 @@
 			<div class="diary-item">
 				<section class="left">
 
+					<p>{{ $diary->created_at->format('Y-m-d') }}</p>
+
 					<h3>{{ $diary->title }}</h3>
 
 					@if ($diary->image_path)
 						<img src="{{ asset('storage/' . $diary->image_path) }}" alt="{{ $diary->title }}" style="max-width: 300px;">
 					@endif
 
-					<p>{{ $diary->created_at->format('Y-m-d') }}</p>
+					<section>
+						<!-- 編集ボタン -->
+						<a href="{{ route('diary.edit', $diary->id) }}" class="btn btn-primary id" id="edit">編集</a>
+
+						<!-- 削除ボタン -->
+						<form action="{{ route('diary.destroy', $diary->id) }}" method="POST" style="display:inline-block;"
+							onsubmit="return confirm('本当に削除しますか？');">
+							@csrf
+							@method('DELETE')
+							<button type="submit" class="btn btn-danger">削除</button>
+						</form>
+					</section>
 
 					<hr>
 
@@ -36,6 +49,7 @@
 
 				<section class="right">
 					<div class="stars">
+						<p>評価</p>
 						@for ($i = 1; $i <= 5; $i++)
 							@if ($i <= $diary->rating)
 								<span class="star">★</span> <!-- 星の塗りつぶし -->
@@ -49,6 +63,7 @@
 						<p>コメント</p>
 						<p class="comment-box">{{ $diary->comment }}</p>
 					</div>
+
 				</section>
 			</div>
 		@endforeach
