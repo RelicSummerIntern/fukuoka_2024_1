@@ -7,5 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Diary extends Model
 {
-    use HasFactory;
+    public function user()
+    {
+        // 日記（Diary）は1人のUserに属すというリレーションを定義
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }
