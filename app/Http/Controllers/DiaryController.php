@@ -13,7 +13,11 @@ class DiaryController extends Controller
      */
     public function index()
     {
-        return view('my-posts');
+        // DBから全てのデータを取得
+        $diaries = Diary::all();
+
+        // 取得したデータをビューに渡す
+        return view('my-posts', compact('diaries'));
     }
 
     /**
