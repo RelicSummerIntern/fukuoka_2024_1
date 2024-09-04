@@ -12,48 +12,49 @@
 			</div>
 		</div>
 	</div>
-	{{-- <x-app-layout>
-		<x-slot name="header">
-			<h2 class="font-semibold text-xl text-gray-800 leading-tight">
-				{{ __('自分の投稿一覧') }}
-			</h2>
-		</x-slot>
 
-		<div class="max-w-7xl mx-auto mt-10 sm:px-6 lg:px-8">
-			<div class="my-4">
-				<a href="{{ route('post.create') }}" class="btn btn-primary" role="button">
-					{{ __('新しい投稿') }}
-				</a>
+	<!-- 投稿の一覧を表示 -->
+	<h1 class="text-center mb-4 fs-1"
+		style="font-family: 'Dancing Script', cursive; color:rgb(203, 38, 20); font-weight: bold">~ Your Diary ~
+	</h1>
+	<div class="container">
+		@foreach ($diaries as $diary)
+			<div class="diary-item">
+				<section class="left">
+
+					<h3>{{ $diary->title }}</h3>
+
+					@if ($diary->image_path)
+						<img src="{{ asset('storage/' . $diary->image_path) }}" alt="{{ $diary->title }}" style="max-width: 300px;">
+					@endif
+
+					<p>{{ $diary->created_at->format('Y-m-d') }}</p>
+
+					<hr>
+
+				</section>
+
+				<section class="right">
+					<div class="stars">
+						@for ($i = 1; $i <= 5; $i++)
+							@if ($i <= $diary->rating)
+								<span class="star">★</span> <!-- 星の塗りつぶし -->
+							@else
+								<span class="star" style="color: white;">★</span> <!-- 空の星 -->
+							@endif
+						@endfor
+					</div>
+
+					<div class="comment">
+						<p>コメント</p>
+						<p class="comment-box">{{ $diary->comment }}</p>
+					</div>
+				</section>
 			</div>
+		@endforeach
+	</div>
+@endsection
 
-			@if (!empty($posts))
-				<div class="grid grid-cols-1 gap-4">
-					@foreach ($posts as $post)
-						<div class="bg-white shadow p-6 rounded-lg">
-							<h4 class="text-lg font-bold">{{ $post->title }}</h4>
-							<p class="text-gray-800">{{ $post->body }}</p>
-							<p class="text-gray-800">{{ $post->updated_at }}</p>
-
-							<div class="mt-4 flex">
-								<a href="{{ route('post.edit', ['id' => $post->id]) }}" class="btn btn-primary mr-2" role="button">
-									{{ __('編集') }}
-								</a>
-								<form action="{{ route('post.destroy', ['id' => $post->id]) }}" method="post">
-									@csrf
-									@method('DELETE')
-									<button type="submit" class="btn btn-danger" onclick="return confirm('本当に削除しますか？')">
-										{{ __('削除') }}
-									</button>
-								</form>
-							</div>
-						</div>
-					@endforeach
-				</div>
-			@else
-				<div class="flex justify-center items-center h-full">
-					<p class="text-lg text-gray-600">投稿はありません。</p>
-				</div>
-			@endif
-		</div>
-	</x-app-layout> --}}
+@section('styles')
+	@vite('resources/css/my-posts.css')
 @endsection

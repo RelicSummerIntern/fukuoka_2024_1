@@ -1,0 +1,70 @@
+.container {
+    background-color: bisque;
+    border-radius: 30px;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.diary-item {
+    background-color: bisque;
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.left {
+    text-align: center;
+}
+
+.right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.comment-box {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    width: 100%;
+    min-height: 150px;
+    max-height: 150px;
+    overflow-y: auto;
+    /* 高さを超えた場合にスクロールする */
+    white-space: pre-wrap;
+}
+
+.left img {
+    max-width: 250px;
+    max-height: 250px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.stars {
+    display: flex;
+    justify-content: start;
+}
+
+.star {
+    color: gold;
+    font-size: 48px;
+    margin-right: 5px;
+}
+
+.comment {
+    font-family: "Yusei Magic", sans-serif;
+}
+
+h3 {
+    font-family: "Yusei Magic", sans-serif;
+}
