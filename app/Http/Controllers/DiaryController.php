@@ -91,6 +91,11 @@ class DiaryController extends Controller
      */
     public function destroy(Diary $diary)
     {
-        //
+        try {
+            $diary->deleteOrFail();
+            return redirect()->route('diary.index')->with('success_message', '日記が削除されました');
+        } catch (\Exception $e) {
+            return redirect()->route('diary.index')->with('error_message', '日記の削除に失敗しました');
+        }
     }
 }
