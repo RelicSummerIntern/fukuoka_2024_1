@@ -46,6 +46,15 @@
     max-height: 250px;
 }
 
+.left p {
+    text-align: left;
+    margin-bottom: 0px;
+}
+
+.left section {
+    margin-top: 20px;
+}
+
 h1 {
     text-align: center;
 }
@@ -53,6 +62,10 @@ h1 {
 .stars {
     display: flex;
     justify-content: start;
+}
+
+.stars p {
+    font-family: Yusei Magic, sans-serif;
 }
 
 .star {
@@ -67,4 +80,19 @@ h1 {
 
 h3 {
     font-family: "Yusei Magic", sans-serif;
+}
+
+.btn {
+    border: black 1px solid;
+    color: white;
+    background-color: none;
+}
+
+.btn:hover {
+    cursor: pointer;
+}
+
+#edit {
+    background-color: gold;
+    color: black;
 }
