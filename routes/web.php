@@ -54,6 +54,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/dirary/index', [DiaryController::class, 'index'])->name('diary.index');
     // 日記を保存するルート
     Route::post('diary/store', [DiaryController::class, 'store'])->name('diary.store');
+    // 日記編集ページを表示するルート
+    Route::get('/diary/{diary}/edit', [DiaryController::class, 'edit'])->name('diary.edit');
+    // 日記を削除するルート
+    Route::delete('/diary/{diary}', [DiaryController::class, 'destroy'])->name('diary.destroy');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
