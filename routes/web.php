@@ -56,6 +56,8 @@ Route::middleware('auth')->group(function () {
     Route::post('diary/store', [DiaryController::class, 'store'])->name('diary.store');
     // 日記編集ページを表示するルート
     Route::get('/diary/{diary}/edit', [DiaryController::class, 'edit'])->name('diary.edit');
+    // 日記を更新するルート
+    Route::put('/diary/{diary}', [DiaryController::class, 'update'])->name('diary.update');
     // 日記を削除するルート
     Route::delete('/diary/{diary}', [DiaryController::class, 'destroy'])->name('diary.destroy');
 
